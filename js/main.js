@@ -1,0 +1,195 @@
+const productos =[
+    /* placas */
+    {
+       id: 1,
+             name: "BORDE BALLENA 40x40",
+             precio: 1350,
+             role: "Borde para las pileta de fibra",
+             categoria:{
+                nombre: "placas",
+                id:"placas"
+             },
+             img:"./img/placas/bordeballena40x40.png"
+   },
+   {
+       id: 2,
+             name: "BORDE L",
+             precio: 1400,
+             role: "Bordes para las piletas de cemento",
+             categoria:{
+                nombre: "placas",
+                id:"placas"
+             },
+             img:"./img/placas/bordeL.png"
+   },
+   {
+       id: 3,
+       name: "ESQUINERO BORDE L",
+       precio: 1550,
+       role: "Esquienros para pileta de cemento",
+       categoria:{
+        nombre: "placas",
+        id:"placas"
+     },
+       img:"./img/placas/esquinerobordeL.png"
+     },
+     {
+       id: 4,
+       name: "CONTRACURVA",
+       precio: 1350,
+       role: "Esquineros para pileta con arco romano",
+       categoria:{
+        nombre: "placas",
+        id:"placas"
+     },
+       img: "./img/placas/contacurvo.png"
+     },
+     {
+       id: 5,
+       name: "BORDE BALLENA 40x60",
+       precio: 1350,
+       role: "Para una vereda de 60cm",
+       categoria:{
+        nombre: "placas",
+        id:"placas"
+     },
+       img: "./img/placas/bordeballena40x60.png"
+     },
+     {
+       id: 6,
+       name: "SOLARIUM",
+       precio: 1220,
+       role: "Para los arco romanos",
+       categoria:{
+        nombre: "placas",
+        id:"placas"
+     },
+       img: "./img/placas/solarium40x40.png"
+     },
+     {
+       id: 7,
+       name: "BORDE BALLENA 40X20",
+       precio: 1020,
+       role: "Para una vereda de 20cm",
+       categoria:{
+        nombre: "placas",
+        id:"placas"
+     },
+       img: "./img/placas/bordeballena40x20.png"
+     },
+     {
+        id: 8,
+        name: "REjILLA",
+        precio: 1020,
+        role: "Para una vereda de 20cm",
+        categoria:{
+         nombre: "placas",
+         id:"placas"
+      },
+        img: "./img/placas/rejillaGrande.png"
+      },
+
+     /* Piletasss */
+     {
+       id: 9,
+       name: "Pileta-01",
+       img: "./img/piletas/pileta1.png",
+       role: "Para un dia de verano",
+       categoria:{
+        nombre: "piletas",
+        id:"piletas"
+     },
+       precio: 2000,
+     },
+
+     {
+        id: 10,
+        name: "Pileta-02",
+        img: "./img/piletas/pileta2.png",
+        categoria:{
+         nombre: "piletas",
+         id:"piletas"
+      },
+        precio: 2000,
+      },
+
+      {
+        id: 11,
+        name: "Pileta-03",
+        img: "./img/piletas/pileta3.png",
+        categoria:{
+         nombre: "piletas",
+         id:"piletas"
+      },
+        precio: 2000,
+      },
+      {
+        id:12,
+        name: "Pileta-04",
+        img: "./img/piletas/pileta4.png",
+        categoria:{
+         nombre: "piletas",
+         id:"piletas"
+      },
+        precio: 2000,
+      },
+      {
+        id: 13,
+        name: "Antihumedad-01",
+        img: "./img/antihumedad/antihumedad-01.jpg",
+        categoria:{
+         nombre: "antihumedad",
+         id:"antihumedad"
+      },
+        precio: 2000,
+      },
+      {
+        id: 14,
+        name: "Antihumedad-02",
+        img: "./img/antihumedad/antihumedad-02.jpg",
+        categoria:{
+         nombre: "antihumedad",
+         id:"antihumedad"
+      },
+        precio: 2000,
+      },
+      {
+        id: 15,
+        name: "Antihumedad-03",
+        img: "./img/antihumedad/antihumedad-03.jpg",
+        categoria:{
+         nombre: "antihumedad",
+         id:"antihumedad"
+      },
+        precio: 2000,
+      },
+      {
+        id: 16,
+        name: "Antihumedad-04",
+        img: "./img/antihumedad/antihumedad-04.jpg",
+        categoria:{
+         nombre: "antihumedad",
+         id:"antihumedad"
+      },
+        precio: 2000,
+      },
+   ]
+
+    const contenedorProductos = document.querySelector("#contenedorProductos");
+    const botonesCategorias = document.querySelectorAll(".botonesCategoria")
+
+   function cargarProductos() {
+    
+    productos.forEach(producto => {
+        const div = document.createElement("div")
+        div.classList.add("producto");
+        div.innerHTML = `<img class="productoImagen" src="${producto.img}" alt="${producto.name}">
+        <div class="productoDetalles">
+            <h3 class="productoTitulo">${producto.name}</h3>
+            <p class="productoPrecio">${producto.precio}</p>
+            <button class="productoAgregar" id="${producto.id}">Agregar</button>`;
+
+            contenedorProductos.append(div);
+    })
+   }
+   cargarProductos();
