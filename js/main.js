@@ -6,7 +6,7 @@ const productos =[
              precio: 1350,
              role: "Borde para las pileta de fibra",
              categoria:{
-                nombre: "placas",
+                nombre: "Placas",
                 id:"placas"
              },
              img:"./img/placas/bordeballena40x40.png"
@@ -17,7 +17,7 @@ const productos =[
              precio: 1400,
              role: "Bordes para las piletas de cemento",
              categoria:{
-                nombre: "placas",
+                nombre: "Placas",
                 id:"placas"
              },
              img:"./img/placas/bordeL.png"
@@ -28,7 +28,7 @@ const productos =[
        precio: 1550,
        role: "Esquienros para pileta de cemento",
        categoria:{
-        nombre: "placas",
+        nombre: "Placas",
         id:"placas"
      },
        img:"./img/placas/esquinerobordeL.png"
@@ -39,7 +39,7 @@ const productos =[
        precio: 1350,
        role: "Esquineros para pileta con arco romano",
        categoria:{
-        nombre: "placas",
+        nombre: "Placas",
         id:"placas"
      },
        img: "./img/placas/contacurvo.png"
@@ -50,7 +50,7 @@ const productos =[
        precio: 1350,
        role: "Para una vereda de 60cm",
        categoria:{
-        nombre: "placas",
+        nombre: "Placas",
         id:"placas"
      },
        img: "./img/placas/bordeballena40x60.png"
@@ -61,7 +61,7 @@ const productos =[
        precio: 1220,
        role: "Para los arco romanos",
        categoria:{
-        nombre: "placas",
+        nombre: "Placas",
         id:"placas"
      },
        img: "./img/placas/solarium40x40.png"
@@ -72,7 +72,7 @@ const productos =[
        precio: 1020,
        role: "Para una vereda de 20cm",
        categoria:{
-        nombre: "placas",
+        nombre: "Placas",
         id:"placas"
      },
        img: "./img/placas/bordeballena40x20.png"
@@ -83,7 +83,7 @@ const productos =[
         precio: 1020,
         role: "Para una vereda de 20cm",
         categoria:{
-         nombre: "placas",
+         nombre: "Placas",
          id:"placas"
       },
         img: "./img/placas/rejillaGrande.png"
@@ -96,7 +96,7 @@ const productos =[
        img: "./img/piletas/pileta1.png",
        role: "Para un dia de verano",
        categoria:{
-        nombre: "piletas",
+        nombre: "Piletas",
         id:"piletas"
      },
        precio: 2000,
@@ -107,7 +107,7 @@ const productos =[
         name: "Pileta-02",
         img: "./img/piletas/pileta2.png",
         categoria:{
-         nombre: "piletas",
+         nombre: "Piletas",
          id:"piletas"
       },
         precio: 2000,
@@ -119,7 +119,7 @@ const productos =[
         img: "./img/piletas/pileta3.png",
         categoria:{
          nombre: "piletas",
-         id:"piletas"
+         id:"Piletas"
       },
         precio: 2000,
       },
@@ -128,7 +128,7 @@ const productos =[
         name: "Pileta-04",
         img: "./img/piletas/pileta4.png",
         categoria:{
-         nombre: "piletas",
+         nombre: "Piletas",
          id:"piletas"
       },
         precio: 2000,
@@ -138,7 +138,7 @@ const productos =[
         name: "Antihumedad-01",
         img: "./img/antihumedad/antihumedad-01.jpg",
         categoria:{
-         nombre: "antihumedad",
+         nombre: "Antihumedad",
          id:"antihumedad"
       },
         precio: 2000,
@@ -148,7 +148,7 @@ const productos =[
         name: "Antihumedad-02",
         img: "./img/antihumedad/antihumedad-02.jpg",
         categoria:{
-         nombre: "antihumedad",
+         nombre: "Antihumedad",
          id:"antihumedad"
       },
         precio: 2000,
@@ -158,7 +158,7 @@ const productos =[
         name: "Antihumedad-03",
         img: "./img/antihumedad/antihumedad-03.jpg",
         categoria:{
-         nombre: "antihumedad",
+         nombre: "Antihumedad",
          id:"antihumedad"
       },
         precio: 2000,
@@ -168,15 +168,17 @@ const productos =[
         name: "Antihumedad-04",
         img: "./img/antihumedad/antihumedad-04.jpg",
         categoria:{
-         nombre: "antihumedad",
+         nombre: "Antihumedad",
          id:"antihumedad"
       },
         precio: 2000,
       },
    ]
 
+   /* LlAMO A MIS ETIQUETAS HTML para poder manipular el dom */
     const contenedorProductos = document.querySelector("#contenedorProductos");
     const botonesCategorias = document.querySelectorAll(".botonCategoria")
+    const tituloPrincipal = document.querySelector("#tituloPrincipal");
 
    function cargarProductos(productosElegidos) {
 
@@ -204,9 +206,14 @@ const productos =[
         botonesCategorias.forEach(boton => boton.classList.remove("active"));
         e.currentTarget.classList.add("active");
 
-        if(e.currentTarget.id != "todos"){        const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id)
+        if(e.currentTarget.id != "todos"){        
+            const productoCategoria = productos.find (producto => producto.categoria.id === e.currentTarget.id);
+            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+
+            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id)
             cargarProductos(productosBoton);
         } else {
+            tituloPrincipal.innerText = "Todos los Productos "
             cargarProductos(productos)
         }
 
