@@ -179,8 +179,10 @@ const productos =[
     const contenedorProductos = document.querySelector("#contenedorProductos");
     const botonesCategorias = document.querySelectorAll(".botonCategoria")
     const tituloPrincipal = document.querySelector("#tituloPrincipal");
+    let botonesAgregar = document.querySelectorAll(".productoAgregar");
+    const numerito = document.querySelector("#numerito");
 
-   function cargarProductos(productosElegidos) {
+    function cargarProductos(productosElegidos) {
 
     contenedorProductos.innerHTML = "";
     
@@ -195,6 +197,8 @@ const productos =[
 
             contenedorProductos.append(div);
     })
+
+    actualizarBotonesAgregar();
    }
    cargarProductos(productos);
 
@@ -218,4 +222,38 @@ const productos =[
         }
 
     })
-   })
+   });
+
+   function actualizarBotonesAgregar(){
+    botonesAgregar = document.querySelectorAll(".productoAgregar");
+
+    botonesAgregar.forEach(boton => {
+      boton.addEventListener("click", agregarAlCarrito)
+    })
+   }
+
+   /* agrego cada PRODUCTO CORRESPONIDIENTE EN el ARRAY */
+   const productosEnCarrito = [];
+
+   function agregarAlCarrito(e){
+      const idBoton = e.currentTarget.id;
+      const productoAgregado = productos.find(producto => producto.id === idBoton);
+    /* me fijo que no se repitan productos en mi carrito */
+    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+      const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+      productosEnCarrito[index].cantidad++;
+  } else {
+      productoAgregado.cantidad =1;
+      productosEnCarrito.push(productoAgregado);
+  }
+    actualizarNumerito();
+
+/* ______________GUARDO MIS PRODUNCTOS EN LOCAL STORAGE________________ */
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito) )
+        }
+
+        /* va a ir actualizando y sumando lo que compren */
+        function actualizarNumerito(){
+          let nuevoNumerito = productosEnCarrito.reduce((acc,producto) => acc + producto.cantidad, 0);
+          numerito.innerText = nuevoNumerito;
+        }
