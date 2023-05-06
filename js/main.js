@@ -190,6 +190,7 @@ const productos =[
     })
 
     actualizarBotonesAgregar();
+
    }
    cargarProductos(productos);
 
@@ -223,12 +224,13 @@ const productos =[
     });
    }
 
-   /* agrego cada PRODUCTO CORRESPONIDIENTE EN el ARRAY */
    const productosEnCarrito = [];
 
    function agregarAlCarrito(e){
-      const idBoton = e.currentTarget.id;
-      const productoAgregado = productos.find(producto => producto.id === idBoton);
+
+    const idBoton = e.currentTarget.id;
+    const productoAgregado = productos.find(producto => producto.id === idBoton);
+
     /* me fijo que no se repitan productos en mi carrito */
     if(productosEnCarrito.some(producto => producto.id === idBoton)) {
       const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
@@ -248,3 +250,6 @@ const productos =[
           let nuevoNumerito = productosEnCarrito.reduce((acc,producto) => acc + producto.cantidad, 0);
           numerito.innerText = nuevoNumerito;
         }
+
+
+
