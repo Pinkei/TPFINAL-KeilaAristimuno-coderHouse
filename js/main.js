@@ -4,7 +4,6 @@ const productos =[
        id: 1,
              name: "BORDE BALLENA 40x40",
              precio: 1350,
-             role: "Borde para las pileta de fibra",
              categoria:{
                 nombre: "Placas",
                 id:"placas"
@@ -15,7 +14,6 @@ const productos =[
        id: 2,
              name: "BORDE L",
              precio: 1400,
-             role: "Bordes para las piletas de cemento",
              categoria:{
                 nombre: "Placas",
                 id:"placas"
@@ -26,7 +24,6 @@ const productos =[
        id: 3,
        name: "ESQUINERO BORDE L",
        precio: 1550,
-       role: "Esquienros para pileta de cemento",
        categoria:{
         nombre: "Placas",
         id:"placas"
@@ -37,7 +34,6 @@ const productos =[
        id: 4,
        name: "CONTRACURVA",
        precio: 1350,
-       role: "Esquineros para pileta con arco romano",
        categoria:{
         nombre: "Placas",
         id:"placas"
@@ -48,7 +44,6 @@ const productos =[
        id: 5,
        name: "BORDE BALLENA 40x60",
        precio: 1350,
-       role: "Para una vereda de 60cm",
        categoria:{
         nombre: "Placas",
         id:"placas"
@@ -59,7 +54,6 @@ const productos =[
        id: 6,
        name: "SOLARIUM",
        precio: 1220,
-       role: "Para los arco romanos",
        categoria:{
         nombre: "Placas",
         id:"placas"
@@ -70,7 +64,6 @@ const productos =[
        id: 7,
        name: "BORDE BALLENA 40X20",
        precio: 1020,
-       role: "Para una vereda de 20cm",
        categoria:{
         nombre: "Placas",
         id:"placas"
@@ -81,7 +74,6 @@ const productos =[
         id: 8,
         name: "REjILLA",
         precio: 1020,
-        role: "Para una vereda de 20cm",
         categoria:{
          nombre: "Placas",
          id:"placas"
@@ -94,7 +86,6 @@ const productos =[
        id: 9,
        name: "Pileta-01",
        img: "./img/piletas/pileta1.png",
-       role: "Para un dia de verano",
        categoria:{
         nombre: "Piletas",
         id:"piletas"
