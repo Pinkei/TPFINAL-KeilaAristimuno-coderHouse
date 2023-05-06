@@ -229,7 +229,7 @@ const productos =[
 
     botonesAgregar.forEach(boton => {
       boton.addEventListener("click", agregarAlCarrito)
-    })
+    });
    }
 
    /* agrego cada PRODUCTO CORRESPONIDIENTE EN el ARRAY */
@@ -248,7 +248,7 @@ const productos =[
   }
     actualizarNumerito();
 
-/* ______________GUARDO MIS PRODUNCTOS EN LOCAL STORAGE________________ */
+/* ______________GUARDO MIS PRODUCTOS EN LOCAL STORAGE________________ */
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito) )
         }
 
