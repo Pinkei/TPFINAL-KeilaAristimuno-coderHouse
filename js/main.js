@@ -1,7 +1,7 @@
 const productos =[
     /* placas */
     {
-       id: 1,
+            id: 1,
              name: "BORDE BALLENA 40x40",
              precio: 1350,
              categoria:{
@@ -9,9 +9,10 @@ const productos =[
                 id:"placas"
              },
              img:"./img/placas/bordeballena40x40.png"
+             
    },
    {
-       id: 2,
+              id: 2,
              name: "BORDE L",
              precio: 1400,
              categoria:{
@@ -170,7 +171,7 @@ const productos =[
     const contenedorProductos = document.querySelector("#contenedorProductos");
     const botonesCategorias = document.querySelectorAll(".botonCategoria")
     const tituloPrincipal = document.querySelector("#tituloPrincipal");
-    let botonesAgregar = document.querySelectorAll(".productoAgregar");
+    let botonesAgregar = document.querySelectorAll(".producto-agregar");
     const numerito = document.querySelector("#numerito");
 
     function cargarProductos(productosElegidos) {
@@ -178,13 +179,15 @@ const productos =[
     contenedorProductos.innerHTML = "";
     
     productosElegidos.forEach(producto => {
+
         const div = document.createElement("div")
         div.classList.add("producto");
         div.innerHTML = `<img class="productoImagen" src="${producto.img}" alt="${producto.name}">
         <div class="productoDetalles">
             <h3 class="productoTitulo">${producto.name}</h3>
-            <p class="productoPrecio">${producto.precio}</p>
-            <button class="productoAgregar" id="${producto.id}">Agregar</button>`;
+            <p class="productoPrecio">$${producto.precio}</p>
+            <button class="producto-agregar" id="${producto.id}">Agregar</button>
+            </div>`;
 
             contenedorProductos.append(div);
     })
@@ -209,36 +212,51 @@ const productos =[
             const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id)
             cargarProductos(productosBoton);
         } else {
-            tituloPrincipal.innerText = "Todos los Productos "
-            cargarProductos(productos)
+            tituloPrincipal.innerText = "Todos los Productos";
+            cargarProductos(productos);
         }
 
     })
    });
 
    function actualizarBotonesAgregar(){
-    botonesAgregar = document.querySelectorAll(".productoAgregar");
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
 
     botonesAgregar.forEach(boton => {
-      boton.addEventListener("click", agregarAlCarrito)
+      boton.addEventListener("click", agregarAlCarrito);
     });
-   }
+  }
 
-   const productosEnCarrito = [];
+  let productosEnCarrito;
 
+  let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+  
+  if (productosEnCarritoLS) {
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+    actualizarNumerito();
+} else {
+    productosEnCarrito = [];
+}
+
+/* aca creo que arranco el problema xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
    function agregarAlCarrito(e){
+    /* productoAgregado creo que es el problema, no me aparece directamente cuando hago clg en la consola tampoco */
 
     const idBoton = e.currentTarget.id;
     const productoAgregado = productos.find(producto => producto.id === idBoton);
+    console.log(productoAgregado)
 
     /* me fijo que no se repitan productos en mi carrito */
+
     if(productosEnCarrito.some(producto => producto.id === idBoton)) {
       const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
       productosEnCarrito[index].cantidad++;
   } else {
-      productoAgregado.cantidad =1;
+    /*________________________ me marca aca el error en consola_____________ */
+      productoAgregado.cantidad = 1;
       productosEnCarrito.push(productoAgregado);
   }
+
     actualizarNumerito();
 
 /* ______________GUARDO MIS PRODUCTOS EN LOCAL STORAGE________________ */
@@ -247,7 +265,7 @@ const productos =[
 
         /* va a ir actualizando y sumando lo que compren */
         function actualizarNumerito(){
-          let nuevoNumerito = productosEnCarrito.reduce((acc,producto) => acc + producto.cantidad, 0);
+          let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
           numerito.innerText = nuevoNumerito;
         }
 

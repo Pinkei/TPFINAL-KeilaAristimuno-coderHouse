@@ -155,7 +155,7 @@ main{
     font-size: 1rem;
 }
 
-.productoAgregar{
+.producto-agregar{
     border: 0;
     background-color: #FFE6C7;
     color:  #FF6000;
@@ -168,7 +168,7 @@ main{
 
 }
 
-.productoAgregar:hover{
+.producto-agregar:hover{
     background-color:  #FF6000;
     color: #FFE6C7;
 }
@@ -224,7 +224,7 @@ border-radius: 1rem;
     justify-content: space-between;
 }
 
-.carritoAccionesVaciar{
+.carrito-acciones-vaciar{
     border: 0;
     background-color:  rgb(230, 226, 226);
     padding: 1rem;
@@ -248,7 +248,7 @@ border-radius: 1rem;
     border-bottom-left-radius: 1rem;
     gap: 1rem;
 }
-.carritoAccionesComprar{
+.carrito-acciones-comprar{
     border: 0;
     background-color:  #FF6000;
     padding: 1rem;

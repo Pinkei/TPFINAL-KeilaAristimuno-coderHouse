@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopPlacasKT</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
@@ -28,70 +29,32 @@
         <main>
             <h2 class="tituloPrincipal">Carrito de compras </h2>
             <div class="contenedorCarrito">
-                <p class="carritoVacio">No hay productos en el carrito. <i class="bi bi-emoji-frown-fill"></i></p>
+                <p id="carrito-vacio" class="carritoVacio">No hay productos en el carrito. <i class="bi bi-emoji-frown-fill"></i></p>
 
-                <div class="carritoProductos disable">
-                    <div class="carritoProducto">
-                        <img class="carritoProductoImagen" src="./img/placas/bordeballena40x60.png" alt="">
-                        <div class="carritoProductoTitulo">
-                        <small>Titulo</small>
-                        <h3>Borde ballena 40x60</h3>
-                    </div>
-                    <div class="carritoProductoCantidad">
-                        <small>Cantidad</small>
-                        <p>1</p>
-                    </div>
-                    <div class="carritoProductoPrecio">
-                        <small>Precio</small>
-                        <p>$1850</p>
-                    </div>
-                    <div class="carritoProductoSubtotal">
-                        <small>Subtotal</small>
-                        <p>$1850</p>
-                    </div>
-                    <button class="carritoProductoEliminar"><i class="bi bi-trash3"></i></button>
-                    </div>
-<!-- ---------------------------pase otro producto mas, copie y pegue-----------------  -->
-                    <div class="carritoProducto">
-                        <img class="carritoProductoImagen" src="./img/placas/bordeballena40x40.png" alt="">
-                        <div class="carritoProductoTitulo">
-                        <small>Titulo</small>
-                        <h3>Borde ballena 40x40</h3>
-                    </div>
-                    <div class="carritoProductoCantidad">
-                        <small>Cantidad</small>
-                        <p>2</p>
-                    </div>
-                    <div class="carritoProductoPrecio">
-                        <small>Precio</small>
-                        <p>$1650</p>
-                    </div>
-                    <div class="carritoProductoSubtotal">
-                        <small>Subtotal</small>
-                        <p>$1650</p>
-                    </div>
-                    <button class="carritoProductoEliminar"><i class="bi bi-trash3"></i></button>
-                    </div>
+                <div id="carrito-productos" class="carritoProductos disable">
+                    <!-- esto lo paso con JS -->
 
                 </div>
             </div>
-            <div class="carritoAcciones disable">
+            <div id="carrito-acciones" class="carritoAcciones disable">
                 <div class="carritoAccionesIzquierda">
-                    <button class="carritoAccionesVaciar">Vaciar Carrito</button>
+                    <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">Vaciar Carrito</button>
                 </div>
                 <div class="carritoAccionesDerecha">
                     <div class="carritoAccionesTotal">
                         <p>Total</p>
                         <p id="total">$3500</p>
                     </div>
-                    <button class="carritoAccionesComprar"> Comprar</button>
+                    <button id="carrito-acciones-comprar" class="carrito-acciones-comprar"> Comprar</button>
                 </div>
             </div>
 
-            <p class="carritoComprado disable"> Muchas gracias por tu compra. <i class="bi bi-bag-heart-fill"></i></p>
+            <p id="carrito-comprado" class="carritoComprado disable"> Muchas gracias por tu compra. <i class="bi bi-bag-heart-fill"></i></p>
         </main>
     </div>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/carrito.js"></script>
 </body>
 </html>
