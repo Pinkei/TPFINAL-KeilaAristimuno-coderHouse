@@ -163,8 +163,8 @@ const productos =[
          nombre: "Antihumedad",
          id:"antihumedad"
       },
-        precio: 2000,
-      },
+        precio: 2000
+      }
    ]
 
    /* LlAMO A MIS ETIQUETAS HTML para poder manipular el dom */
@@ -193,6 +193,7 @@ const productos =[
     })
 
     actualizarBotonesAgregar();
+    /*  botonesAgregar me tira los 16 lenght bien*/
 
    }
    cargarProductos(productos);
@@ -212,6 +213,7 @@ const productos =[
             const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id)
             cargarProductos(productosBoton);
         } else {
+          /* sino muestra "todos los productos" */
             tituloPrincipal.innerText = "Todos los Productos";
             cargarProductos(productos);
         }
@@ -219,6 +221,8 @@ const productos =[
     })
    });
 
+
+/* cada vez que se ejecuta la funcion de cargar productos, entonces lo traigo del dom cada vez que hago click y llamo un eventlistener que llama a la funcion agregarAlCarrito  */
    function actualizarBotonesAgregar(){
     botonesAgregar = document.querySelectorAll(".producto-agregar");
 
@@ -238,35 +242,21 @@ const productos =[
     productosEnCarrito = [];
 }
 
-/* aca creo que arranco el problema xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
-   function agregarAlCarrito(e){
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx aca arranco el problema xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+
+
+/* quiero que agregarAlCarrito agregue esos elementos a un array xq tengo un array de productos agregados al carrito */
+    function agregarAlCarrito(e){
     /* productoAgregado creo que es el problema, no me aparece directamente cuando hago clg en la consola tampoco */
 
     const idBoton = e.currentTarget.id;
+   console.log(idBoton)/*   --> si me devuelve los id de los botones que apreto funciona!!!!!!!!!!!!!! */
     const productoAgregado = productos.find(producto => producto.id === idBoton);
-    console.log(productoAgregado)
+    console.log(productoAgregado) /* me aparece undifine cuando toco agregarProducto aca! */
 
     /* me fijo que no se repitan productos en mi carrito */
 
-    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
-      const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-      productosEnCarrito[index].cantidad++;
-  } else {
-    /*________________________ me marca aca el error en consola_____________ */
-      productoAgregado.cantidad = 1;
-      productosEnCarrito.push(productoAgregado);
-  }
 
-    actualizarNumerito();
-
-/* ______________GUARDO MIS PRODUCTOS EN LOCAL STORAGE________________ */
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito) )
-        }
-
-        /* va a ir actualizando y sumando lo que compren */
-        function actualizarNumerito(){
-          let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-          numerito.innerText = nuevoNumerito;
         }
 
 
