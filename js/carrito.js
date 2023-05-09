@@ -92,7 +92,7 @@ function eliminarDelCarrito(e) {
         onClick: function(){} // Callback after click
       }).showToast();
 
-    const idBoton = e.currentTarget.id;
+    const idBoton = parseInt(e.currentTarget.id);
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
     
     productosEnCarrito.splice(index, 1);

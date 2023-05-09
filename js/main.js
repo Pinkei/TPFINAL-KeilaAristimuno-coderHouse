@@ -249,12 +249,31 @@ const productos =[
     function agregarAlCarrito(e){
     /* productoAgregado creo que es el problema, no me aparece directamente cuando hago clg en la consola tampoco */
 
-    const idBoton = e.currentTarget.id;
+    const idBoton = parseInt(e.currentTarget.id);
    console.log(idBoton)/*   --> si me devuelve los id de los botones que apreto funciona!!!!!!!!!!!!!! */
     const productoAgregado = productos.find(producto => producto.id === idBoton);
     console.log(productoAgregado) /* me aparece undifine cuando toco agregarProducto aca! */
 
     /* me fijo que no se repitan productos en mi carrito */
+    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+      const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+      productosEnCarrito[index].cantidad++;
+  } else {
+    /*________________________ me marca aca el error en consola_____________ */
+      productoAgregado.cantidad = 1;
+      productosEnCarrito.push(productoAgregado);
+  }
+
+    actualizarNumerito();
+
+/* ______________GUARDO MIS PRODUCTOS EN LOCAL STORAGE________________ */
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito) )
+        }
+
+        /* va a ir actualizando y sumando lo que compren */
+        function actualizarNumerito(){
+          let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+          numerito.innerText = nuevoNumerito;
 
 
         }
