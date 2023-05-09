@@ -4,9 +4,14 @@ const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoProductos = document.querySelector("#carrito-productos");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
+let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
+const contenedorTotal = document.querySelector("#total");
+const botonComprar = document.querySelector("#carrito-acciones-comprar");
 
 
 
+function cargarProductosCarrito(){
     if (productosEnCarrito ) {
 
         /* para que cargue bien por las dudas que localStorage falle */
@@ -45,14 +50,27 @@ const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
     
             contenedorCarritoProductos.append(div);
         })
-    
+
+        actualizarBotonesEliminar();
+
     } else {
         contenedorCarritoVacio.classList.remove("disabled");
         contenedorCarritoProductos.classList.add("disabled");
         contenedorCarritoAcciones.classList.add("disabled");
         contenedorCarritoComprado.classList.add("disabled");
     }
+}
+    cargarProductosCarrito();
 
+    function actualizarBotonesEliminar() {
+        botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+    
+        botonesEliminar.forEach(boton => {
+            boton.addEventListener("click", eliminarDelCarrito);
+        });
+    }
 
+    
+    
 
 
