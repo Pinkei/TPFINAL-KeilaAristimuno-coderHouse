@@ -46,6 +46,13 @@ const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
             contenedorCarritoProductos.append(div);
         })
     
+    } else {
+        contenedorCarritoVacio.classList.remove("disabled");
+        contenedorCarritoProductos.classList.add("disabled");
+        contenedorCarritoAcciones.classList.add("disabled");
+        contenedorCarritoComprado.classList.add("disabled");
     }
+
+
 
 

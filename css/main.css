@@ -180,13 +180,13 @@ main{
     gap: 1.5;
 }
 
-.carritoVacio, 
-.carritoComprado{
+.carrito-vacio, 
+.carrito-comprado{
     color: #FF6000;
     
 }
 
-.carritoProductos{
+.carrito-productos{
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -219,7 +219,7 @@ border-radius: 1rem;
     cursor:pointer;
 }
 
-.carritoAcciones{
+.carrito-acciones{
     display: flex;
     justify-content: space-between;
 }
@@ -259,6 +259,6 @@ border-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
 
-.disable{
+.disabled{
     display: none;
 }
