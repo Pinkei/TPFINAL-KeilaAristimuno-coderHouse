@@ -242,24 +242,18 @@ const productos =[
     productosEnCarrito = [];
 }
 
-/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx aca arranco el problema xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
-
-
 /* quiero que agregarAlCarrito agregue esos elementos a un array xq tengo un array de productos agregados al carrito */
     function agregarAlCarrito(e){
-    /* productoAgregado creo que es el problema, no me aparece directamente cuando hago clg en la consola tampoco */
 
     const idBoton = parseInt(e.currentTarget.id);
-   console.log(idBoton)/*   --> si me devuelve los id de los botones que apreto funciona!!!!!!!!!!!!!! */
+   console.log(idBoton)
     const productoAgregado = productos.find(producto => producto.id === idBoton);
-    console.log(productoAgregado) /* me aparece undifine cuando toco agregarProducto aca! */
 
     /* me fijo que no se repitan productos en mi carrito */
     if(productosEnCarrito.some(producto => producto.id === idBoton)) {
       const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
       productosEnCarrito[index].cantidad++;
   } else {
-    /*________________________ me marca aca el error en consola_____________ */
       productoAgregado.cantidad = 1;
       productosEnCarrito.push(productoAgregado);
   }
