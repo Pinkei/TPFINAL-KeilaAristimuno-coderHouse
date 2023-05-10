@@ -78,6 +78,26 @@ function cargarProductosCarrito(){
 
     /* tachito de basura, para borrar mis productos: */
     function eliminarDelCarrito(e){
+
+        Toastify({
+            text: "Producto eliminado",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #FF6000, rgb(230, 226, 226))",
+              borderRadius: '2rem'
+            },
+            offset: {
+              x: '1.8rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+              y: '1.8rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
+
         const idBoton = parseInt(e.currentTarget.id);
         const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
         
@@ -92,9 +112,42 @@ function cargarProductosCarrito(){
     botonVaciar.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito() {
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito))
-    cargarProductosCarrito();
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: '¿Estas seguro?',
+        text: "¡Se van a vaciar todos tus productos del carrito!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, vaciar el carrito',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+            productosEnCarrito.length = 0;
+            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito))
+            cargarProductosCarrito();
+            swalWithBootstrapButtons.fire(
+            'Perfecto',
+            'Tu carrito fue vaciado exitosamente.',
+            'success'
+          )
+        } else {
+          swalWithBootstrapButtons.fire(
+            'Abortamos mision',
+            'Tu carrito no fue vaciado :)',
+            'error'
+          )
+        }
+      })
+
 }
 
 /* actuliza el boton total del carrito */
@@ -108,6 +161,15 @@ function actualizarTotal(){
 /* boton comprar del carrito */
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito() {
+
+    Swal.fire({
+        title: '¡Muchas gracias por tu compra!',
+        text: 'Nos estaremos comunicando a la brevedad para coordinar la entrega',
+        imageUrl: './img/logoKT.png',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Atermicos Kt',
+      })
 
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));

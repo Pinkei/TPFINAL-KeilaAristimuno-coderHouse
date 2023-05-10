@@ -1,171 +1,11 @@
-const productos =[
-    /* placas */
-    {
-            id: 1,
-             name: "BORDE BALLENA 40x40",
-             precio: 1350,
-             categoria:{
-                nombre: "Placas",
-                id:"placas"
-             },
-             img:"./img/placas/bordeballena40x40.png"
-             
-   },
-   {
-              id: 2,
-             name: "BORDE L",
-             precio: 1400,
-             categoria:{
-                nombre: "Placas",
-                id:"placas"
-             },
-             img:"./img/placas/bordeL.png"
-   },
-   {
-       id: 3,
-       name: "ESQUINERO BORDE L",
-       precio: 1550,
-       categoria:{
-        nombre: "Placas",
-        id:"placas"
-     },
-       img:"./img/placas/esquinerobordeL.png"
-     },
-     {
-       id: 4,
-       name: "CONTRACURVA",
-       precio: 1350,
-       categoria:{
-        nombre: "Placas",
-        id:"placas"
-     },
-       img: "./img/placas/contacurvo.png"
-     },
-     {
-       id: 5,
-       name: "BORDE BALLENA 40x60",
-       precio: 1350,
-       categoria:{
-        nombre: "Placas",
-        id:"placas"
-     },
-       img: "./img/placas/bordeballena40x60.png"
-     },
-     {
-       id: 6,
-       name: "SOLARIUM",
-       precio: 1220,
-       categoria:{
-        nombre: "Placas",
-        id:"placas"
-     },
-       img: "./img/placas/solarium40x40.png"
-     },
-     {
-       id: 7,
-       name: "BORDE BALLENA 40X20",
-       precio: 1020,
-       categoria:{
-        nombre: "Placas",
-        id:"placas"
-     },
-       img: "./img/placas/bordeballena40x20.png"
-     },
-     {
-        id: 8,
-        name: "REjILLA",
-        precio: 1020,
-        categoria:{
-         nombre: "Placas",
-         id:"placas"
-      },
-        img: "./img/placas/rejillaGrande.png"
-      },
-
-     /* Piletasss */
-     {
-       id: 9,
-       name: "Pileta-01",
-       img: "./img/piletas/pileta1.png",
-       categoria:{
-        nombre: "Piletas",
-        id:"piletas"
-     },
-       precio: 2000,
-     },
-
-     {
-        id: 10,
-        name: "Pileta-02",
-        img: "./img/piletas/pileta2.png",
-        categoria:{
-         nombre: "Piletas",
-         id:"piletas"
-      },
-        precio: 2000,
-      },
-
-      {
-        id: 11,
-        name: "Pileta-03",
-        img: "./img/piletas/pileta3.png",
-        categoria:{
-         nombre: "piletas",
-         id:"Piletas"
-      },
-        precio: 2000,
-      },
-      {
-        id:12,
-        name: "Pileta-04",
-        img: "./img/piletas/pileta4.png",
-        categoria:{
-         nombre: "Piletas",
-         id:"piletas"
-      },
-        precio: 2000,
-      },
-      {
-        id: 13,
-        name: "Antihumedad-01",
-        img: "./img/antihumedad/antihumedad-01.jpg",
-        categoria:{
-         nombre: "Antihumedad",
-         id:"antihumedad"
-      },
-        precio: 2000,
-      },
-      {
-        id: 14,
-        name: "Antihumedad-02",
-        img: "./img/antihumedad/antihumedad-02.jpg",
-        categoria:{
-         nombre: "Antihumedad",
-         id:"antihumedad"
-      },
-        precio: 2000,
-      },
-      {
-        id: 15,
-        name: "Antihumedad-03",
-        img: "./img/antihumedad/antihumedad-03.jpg",
-        categoria:{
-         nombre: "Antihumedad",
-         id:"antihumedad"
-      },
-        precio: 2000,
-      },
-      {
-        id: 16,
-        name: "Antihumedad-04",
-        img: "./img/antihumedad/antihumedad-04.jpg",
-        categoria:{
-         nombre: "Antihumedad",
-         id:"antihumedad"
-      },
-        precio: 2000
-      }
-   ]
+/* lleva al producto.json */
+let productos = [];
+fetch("./js/productos.json")
+.then(response => response.json())
+.then(data => {
+  productos = data;
+  cargarProductos(productos);
+})
 
    /* LlAMO A MIS ETIQUETAS HTML para poder manipular el dom */
     const contenedorProductos = document.querySelector("#contenedorProductos");
@@ -244,6 +84,25 @@ const productos =[
 
 /* quiero que agregarAlCarrito agregue esos elementos a un array xq tengo un array de productos agregados al carrito */
     function agregarAlCarrito(e){
+
+      Toastify({
+        text: "Se agrego a tu carrito",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #FF6000, rgb(230, 226, 226))",
+          borderRadius: '2rem'
+        },
+        offset: {
+          x: '1.8rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+          y: '1.8rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
 
     const idBoton = parseInt(e.currentTarget.id);
    console.log(idBoton)
