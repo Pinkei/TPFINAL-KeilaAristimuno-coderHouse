@@ -15,7 +15,8 @@ const botonComprar = document.querySelector("#carrito-acciones-comprar");
 
 
 function cargarProductosCarrito(){
-    if (productosEnCarrito ) {
+    /* el .lenght para que me tire el no hay productos en carrito */
+    if (productosEnCarrito && productosEnCarrito.length > 0) {
 
         /* para que cargue bien por las dudas que localStorage falle */
         contenedorCarritoVacio.classList.add("disabled");
