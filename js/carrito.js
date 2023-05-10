@@ -1,4 +1,7 @@
 const productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
+console.log(JSON.parse(productosEnCarrito)); //me tira error 
+
+/* me devuelve todo el producto bien: console.log(localStorage.getItem("productos-en-carrito")); */
 
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoProductos = document.querySelector("#carrito-productos");
@@ -45,7 +48,7 @@ function cargarProductosCarrito(){
             <small>Subtotal</small>
             <p>$${producto.precio * producto.cantidad}</p>
         </div>
-        <button class="carritoProductoEliminar" id="${producto.id}"><i class="bi bi-trash3"></i></button>
+        <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash3"></i></button>
             `;
     
             contenedorCarritoProductos.append(div);
@@ -70,7 +73,16 @@ function cargarProductosCarrito(){
         });
     }
 
-    
+    /* tachito de basura, para borrar mis productos: */
+    function eliminarDelCarrito(e){
+        const idBoton = parseInt(e.currentTarget.id);
+        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+        
+        productosEnCarrito.splice(index, 1);
+        cargarProductosCarrito();
+
+        localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    } 
     
 
 
