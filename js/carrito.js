@@ -1,5 +1,6 @@
 const productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
-console.log(JSON.parse(productosEnCarrito)); //me tira error 
+/* console.log(JSON.parse(productosEnCarrito)); //me tira error  */
+
 
 /* me devuelve todo el producto bien: console.log(localStorage.getItem("productos-en-carrito")); */
 
@@ -56,6 +57,7 @@ function cargarProductosCarrito(){
         })
 
         actualizarBotonesEliminar();
+        actualizarTotal();
 
     } else {
         contenedorCarritoVacio.classList.remove("disabled");
@@ -86,4 +88,33 @@ function cargarProductosCarrito(){
     } 
     
 
+    /* boton para vaciar carrito*/
+    botonVaciar.addEventListener("click", vaciarCarrito);
 
+function vaciarCarrito() {
+    productosEnCarrito.length = 0;
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito))
+    cargarProductosCarrito();
+}
+
+/* actuliza el boton total del carrito */
+function actualizarTotal(){
+    const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+    total.innerText = `$${totalCalculado}`;
+
+} 
+
+
+/* boton comprar del carrito */
+botonComprar.addEventListener("click", comprarCarrito);
+function comprarCarrito() {
+
+    productosEnCarrito.length = 0;
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
+    contenedorCarritoVacio.classList.add("disabled");
+    contenedorCarritoProductos.classList.add("disabled");
+    contenedorCarritoAcciones.classList.add("disabled");
+    contenedorCarritoComprado.classList.remove("disabled");
+
+}
