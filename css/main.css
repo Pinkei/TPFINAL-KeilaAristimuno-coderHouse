@@ -41,10 +41,11 @@ aside{
     justify-content: space-between; 
 }
 
-.logo{
-    font-weight: 400;
-    font-size: 1.3rem;
+.logoImg{
+    max-width: 100%;
+    border-radius: 1rem;
 }
+
 .menu{
     display: flex;
     flex-direction:column;
