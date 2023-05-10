@@ -118,6 +118,10 @@ aside{
 .textoFooter{
     color:#FFA559;
     font-size: .85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 main{
@@ -216,6 +220,7 @@ border-radius: 1rem;
     font-size: 0.75rem;
 }
 
+
 .carrito-producto-eliminar{
     border: 0;
     background-color: transparent;
@@ -272,3 +277,37 @@ border-radius: 1rem;
 }
 
 
+.redes{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;  
+}
+
+.redes li{
+    margin: 0 10px;
+}
+
+.redes a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.redes a i{
+    font-size: 1.7rem;
+    transition: color .4s ease;
+}
+
+
+.redes__instagram:hover i{
+    color:#E1306C;
+}
+
+.redes__linkedin:hover i{
+    color:#0A66C2;
+}
+
+.redes__github:hover i{
+    color:#6cc644;
+}
