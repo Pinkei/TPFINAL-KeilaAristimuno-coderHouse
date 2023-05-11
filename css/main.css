@@ -311,3 +311,52 @@ border-radius: 1rem;
 .redes__github:hover i{
     color:#6cc644;
 }
+
+/* css del clima */
+
+#conteinerClima{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #EF3B36;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #EF3B36);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #EF3B36); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+text-align: center;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-gap: 10px
+};
+
+#caja1, #caja2, #caja3 {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 20%;
+    width: 200px;
+    height: 200px;
+}
+
+#caja1{
+    background-color: transparent;
+    color: rgb(190, 126, 126);
+}
+
+#caja2{
+    background-color: rgba(0, 255, 255, 0.719);
+    color: #FFE6C7;
+}
+
+#caja3{
+    background-color:transparent;
+    color: rgb(214, 156, 156);
+}
+
+.climaTitulo{
+color: rgb(190, 126, 126);
+    position: absolute;
+    
+
+}

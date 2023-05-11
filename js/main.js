@@ -131,6 +131,85 @@ fetch("./js/productos.json")
 
         }
 
+/*_________________________ configuracion de api del clima_________________________ */
+//esta permite compartir la ubicacion si el usario lo desea:
+window.addEventListener('load', ()=>{
+  let lon
+  let lat
+  /* traigo mis elementos del DOM */
+
+  let temperaturaValor = document.getElementById('temperatura-valor')
+  let temperaturaDescripcion = document.getElementById('temperatura-descripcion')
+
+  let ubicacion = document.getElementById('ubicacion')
+  let iconoAnimado = document.getElementById('icono-animado')
+
+  let vientoVelocidad = document.getElementById('viento-velocidad')
 
 
+
+    if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(posicion => {
+      //console.log(posicion.coords.latitude)
+      lon=posicion.coords.longitude
+      lat=posicion.coords.latitude
+      //ubicaion actual
+      //const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5981035bd4a5cb58fe7932b4f52ae640`
+
+      //ubicacion por ciudad
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=Argentina&lang=es&units=metric&appid=5981035bd4a5cb58fe7932b4f52ae640`
+    
+      //console.log(url)
+
+      fetch(url)
+      .then(response => {return response.json()})
+      .then(data => {
+        let temp = Math.round(data.main.temp)
+        temperaturaValor.textContent = `${temp}ºC`
+
+        let desc = data.weather[0].description
+        temperaturaDescripcion.textContent = desc.toUpperCase()
+
+        ubicacion.textContent=data.name
+
+        vientoVelocidad.textContent = `${data.wind.speed} m/s`
+        //console.log(data.wind.speed)
+
+        /* para los iconmnos animados */
+        console.log(data.weather[0].main)
+        switch (data.weather[0].main){
+          case 'Clear':
+            iconoAnimado.src = 'animated/day.svg'
+            console.log('SOLEADO')
+          break;
+          case 'Clouds':
+            iconoAnimado.src = 'animated/cloudy-day-1.svg'
+            console.log('NUBES')
+          break;
+          case 'Drizzle':
+            iconoAnimado.src='animated/rainy-2.svg'
+            console.log('LLOVIZNA');
+            break;
+          case 'Rain':
+            iconoAnimado.src='animated/rainy-7.svg'
+            console.log('LLUVIA');
+            break;
+            case 'Thunderstorm':
+              iconoAnimado.src='animated/thunder.svg'
+              console.log('TORMENTA');
+              break;
+            default:
+                iconoAnimado.src='animated/day.svg'
+                console.log('por defecto');
+        }
+
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+    });
+    
+  }
+})
 
