@@ -25,19 +25,17 @@ h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul{
 
 .contenedor{
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 4fr;
     background-color: #FF6000 ;
 }
 
 aside{
-    grid-row: 1 / 2; /* ocupa la primera fila */
-  grid-column: 1 / 3; /* ocupa todas las columnas */
     padding: 2rem;
     padding-right: 0;
     color: #FFE6C7;
     position: relative; 
     top: 0;
-/*     height: 100vh;  */
+    height: 100vh; 
     display: flex; 
     flex-direction: column; 
     justify-content: space-between; 
@@ -59,7 +57,7 @@ aside{
     border: 0;
     color: #FFE6C7;
     cursor: pointer;
-    display: list-item;
+    display: flex;
     align-items: center;
     gap: 1rem;
     font-weight: 600;
@@ -127,6 +125,7 @@ aside{
 main{
     background-color:#FFE6C7;
     margin: 1rem;
+    margin-left: 0;
     border-radius: 2rem;
     padding: 3rem;
 }
