@@ -84,8 +84,8 @@
 
      {
        "id": 9,
-       "name": "Pileta-01",
-       "img": "./img/piletas/pileta1.png",
+       "name": "Cabina",
+       "img": "./img/piletas/cabina_1.jpeg",
        "categoria":{
         "nombre": "Piletas",
         "id":"piletas"
@@ -95,8 +95,8 @@
 
      {
         "id": 10,
-        "name": "Pileta-02",
-        "img": "./img/piletas/pileta2.png",
+        "name": "Cabina",
+        "img": "./img/piletas/cabina_2.jpeg",
         "categoria":{
          "nombre": "Piletas",
          "id":"piletas"
@@ -107,7 +107,7 @@
       {
         "id": 11,
         "name": "Pileta-03",
-        "img": "./img/piletas/pileta3.png",
+        "img": "./img/piletas/cabina_3.jpeg",
         "categoria":{
          "nombre": "piletas",
          "id":"Piletas"
@@ -116,8 +116,8 @@
       },
       {
         "id":12,
-        "name": "Pileta-04",
-        "img": "./img/piletas/pileta4.png",
+        "name": "Cabina",
+        "img": "./img/piletas/cabina_3.jpeg",
         "categoria":{
          "nombre": "Piletas",
          "id":"piletas"
@@ -126,8 +126,8 @@
       },
       {
         "id": 13,
-        "name": "Antihumedad-01",
-        "img": "./img/antihumedad/antihumedad-01.jpg",
+        "name": "Ceramicas",
+        "img": "./img/antihumedad/ceramica_1.jpeg",
         "categoria":{
          "nombre": "Antihumedad",
          "id":"antihumedad"
@@ -136,8 +136,8 @@
       },
       {
         "id": 14,
-        "name": "Antihumedad-02",
-        "img": "./img/antihumedad/antihumedad-02.jpg",
+        "name": "Ceramicas",
+        "img": "./img/antihumedad/ceramica_2.jpeg",
         "categoria":{
          "nombre": "Antihumedad",
          "id":"antihumedad"
@@ -146,8 +146,8 @@
       },
       {
         "id": 15,
-        "name": "Antihumedad-03",
-        "img": "./img/antihumedad/antihumedad-03.jpg",
+        "name": "Ceramicas",
+        "img": "./img/antihumedad/ceramica_3.jpeg",
         "categoria":{
          "nombre": "Antihumedad",
          "id":"antihumedad"
@@ -156,11 +156,51 @@
       },
       {
         "id": 16,
-        "name": "Antihumedad-04",
-        "img": "./img/antihumedad/antihumedad-04.jpg",
+        "name": "Ceramicas",
+        "img": "./img/antihumedad/ceramica_4.jpeg",
         "categoria":{
          "nombre": "Antihumedad",
          "id":"antihumedad"
+      },
+        "precio": 2000
+      },
+      {
+        "id":17,
+        "name": "Motores",
+        "img": "./img/piletas/motores_1.jpeg",
+        "categoria":{
+         "nombre": "Piletas",
+         "id":"piletas"
+      },
+        "precio": 2000
+      },
+      {
+        "id":18,
+        "name": "Motores",
+        "img": "./img/piletas/motores_2.jpeg",
+        "categoria":{
+         "nombre": "Piletas",
+         "id":"piletas"
+      },
+        "precio": 2000
+      },
+      {
+        "id":19,
+        "name": "Motores",
+        "img": "./img/piletas/motores_3.jpeg",
+        "categoria":{
+         "nombre": "Piletas",
+         "id":"piletas"
+      },
+        "precio": 2000
+      },
+      {
+        "id":20,
+        "name": "Motores",
+        "img": "./img/piletas/motores_4.jpeg",
+        "categoria":{
+         "nombre": "Piletas",
+         "id":"piletas"
       },
         "precio": 2000
       }

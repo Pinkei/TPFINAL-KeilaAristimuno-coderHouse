@@ -176,7 +176,7 @@ window.addEventListener('load', ()=>{
         //console.log(data.wind.speed)
 
         /* para los iconmnos animados */
-        console.log(data.weather[0].main)
+/*         console.log(data.weather[0].main)
         switch (data.weather[0].main){
           case 'Clear':
             iconoAnimado.src = 'animated/day.svg'
@@ -201,7 +201,7 @@ window.addEventListener('load', ()=>{
             default:
                 iconoAnimado.src='animated/day.svg'
                 console.log('por defecto');
-        }
+        } */
 
       })
       .catch(error => {
